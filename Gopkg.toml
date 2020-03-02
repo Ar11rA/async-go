@@ -32,3 +32,8 @@
 [[constraint]]
   name = "github.com/gojektech/heimdall"
   version = "5.0.2"
+
+
+[[constraint]]
+  branch = "master"
+  name = "github.com/streadway/amqp"

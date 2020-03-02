@@ -33,10 +33,9 @@ func callQuoteAsync(done chan string) {
 	}
 }
 
-func main() {
+func getEpisodes() {
 	episodes := api.GetEpisodes()
 	names := make([]chan string, len(episodes))
-
 	for i := 0; i < len(episodes); i++ {
 		names[i] = make(chan string)
 		go api.GetEpisodeName(episodes[i], names[i])
@@ -44,6 +43,11 @@ func main() {
 	for i := 0; i < len(episodes); i++ {
 		fmt.Println(<-names[i])
 	}
+}
+
+func main() {
+	fmt.Println("Getting episodes for Rick&Morty")
+	getEpisodes()
 	fmt.Println("Start simulator sync", time.Now())
 	callSimulatorSync()
 	fmt.Println("End simulator sync", time.Now())

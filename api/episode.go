@@ -16,7 +16,7 @@ type Episode struct{
 }
 
 func GetEpisodes() []string {
-	timeout := 1000 * time.Millisecond
+	timeout := 10000 * time.Millisecond
 	client := httpclient.NewClient(httpclient.WithHTTPTimeout(timeout))
 	res, err := client.Get("https://rickandmortyapi.com/api/character/1", nil)
 	if err != nil{
@@ -31,7 +31,7 @@ func GetEpisodes() []string {
 }
 
 func GetEpisodeName(episodeUrl string, name chan string) {
-	timeout := 1000 * time.Millisecond
+	timeout := 10000 * time.Millisecond
 	client := httpclient.NewClient(httpclient.WithHTTPTimeout(timeout))
 	res, err := client.Get(episodeUrl, nil)
 	if err != nil{
